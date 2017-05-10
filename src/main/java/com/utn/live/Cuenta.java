@@ -2,6 +2,7 @@ package com.utn.live;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Date;
 
 /**
  * Created by pablis on 09/05/17.
@@ -20,6 +21,20 @@ public class Cuenta {
         return saldo;
     }
 
+    public double getSaldoByRange(Date desde , Date hasta) {
+
+        double saldo = 0;
+
+        for (Movimiento m : this.getMovimientos()) {
+
+            if ((m.getFecha().after(desde)) && (m.getFecha().before(hasta))) {
+                    saldo = saldo + m.getMonto();
+            }
+        }
+
+        return saldo;
+
+    }
 
     public double getSaldo() {
         double saldo = 0;
