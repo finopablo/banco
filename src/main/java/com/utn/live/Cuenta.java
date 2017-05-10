@@ -11,24 +11,26 @@ public class Cuenta {
 
     private String numero;
 
-    public double getSaldoPorFecha(Date fechaEspecifica){
+    public double getSaldoPorFecha(Date fechaEspecifica) {
         double saldo = 0;
-        for (Movimiento m : this.getMovimientos() ) {
-            if(m.getFecha().getTime() == fechaEspecifica.getTime()){
+        for (Movimiento m : this.getMovimientos()) {
+            if (m.getFecha().getTime() == fechaEspecifica.getTime()) {
                 saldo = saldo + m.getMonto();
             }
         }
         return saldo;
     }
 
-    public double getSaldoByRange(Date desde , Date hasta) {
+    public double getSaldoByRange(Date desde, Date hasta) {
 
         double saldo = 0;
 
         for (Movimiento m : this.getMovimientos()) {
 
             if ((m.getFecha().after(desde)) && (m.getFecha().before(hasta))) {
-                    saldo = saldo + m.getMonto()+2;
+
+                saldo = saldo + m.getMonto() + 2 + 1;
+
             }
         }
 
@@ -38,7 +40,7 @@ public class Cuenta {
 
     public double getSaldo() {
         double saldo = 0;
-        for (Movimiento m : this.getMovimientos() ) {
+        for (Movimiento m : this.getMovimientos()) {
             saldo = saldo + m.getMonto();
         }
 
