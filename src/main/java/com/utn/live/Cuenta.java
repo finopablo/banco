@@ -28,7 +28,7 @@ public class Cuenta {
         for (Movimiento m : this.getMovimientos()) {
 
             if ((m.getFecha().after(desde)) && (m.getFecha().before(hasta))) {
-                    saldo = saldo + m.getMonto();
+                    saldo = saldo + 2;
             }
         }
 
