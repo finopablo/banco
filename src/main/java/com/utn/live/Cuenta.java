@@ -1,5 +1,6 @@
 package com.utn.live;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,7 +10,15 @@ public class Cuenta {
 
     private String numero;
 
-
+    public double getSaldoPorFecha(Date fechaEspecifica){
+        double saldo = 0;
+        for (Movimiento m : this.getMovimientos() ) {
+            if(m.getFecha().getTime() == fechaEspecifica.getTime()){
+                saldo = saldo + m.getMonto();
+            }
+        }
+        return saldo;
+    }
 
 
     public double getSaldo() {
@@ -70,5 +79,6 @@ public class Cuenta {
 
     private String sucursal;
     private List<Movimiento> movimientos;
+
 
 }
